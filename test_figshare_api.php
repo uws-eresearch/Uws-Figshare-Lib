@@ -7,7 +7,7 @@ require 'Figshare_api.php';  // The actual Figshare Lib.
 $action = "A";
 $title ="test 3";
 $description = "Test 3 Description";
-$type =""; // Media, Dataset, Poster, Paper, Thesis, Code, Presentation or Fileset
+$type =""; // Figure, Media, Dataset, Poster, Paper, Thesis, Code, Presentation or Fileset
 // //See figshare.com/article_types
 $article_id = '';
 $cat_number = '';
