@@ -345,9 +345,7 @@ $cat_list_json =  Talk_To_Figshare ('GET', 'http://api.figshare.com/v1/categorie
 $cat_list_arr = array();
 $cat_list_arr = json_decode($cat_list_json, true);
 
-//echo ($cat_list_arr ['items'][0]['id']);
-//echo "\n";
-//echo($cat_list_arr ['items'][0]['name']);
-//echo "\n";
+return $cat_list_arr;
 }
+//-------------------------------------------------------------------------------------------------------
 ?>
