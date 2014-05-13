@@ -1,0 +1,134 @@
+<?php
+
+require 'Figshare_api.php';  // The actual Figshare Lib.
+
+// Actions summary..
+
+/*
+A = Create_an_Article($title, $description, $type)
+B = Update_Article ($title, $description, $type, $article_id)
+C = Delete_Article ($article_id)
+D = Add_Category_to_Article($article_id, $cat_number)
+E = Add_Tags_to_Article ($article_id, $tag_name)
+F = Add_links_to_Article($article_id, $tag_name)
+G = Search_for_an_author ($author)
+H = Create_new_author ($author)
+I = Add_authors_to_article ($article_id, $author_id)
+J = Upload_file_to_article ($article_id, $file_path)
+K = Check_the_article_details($article_id)
+L = View_article_versions($article_id)
+M = View_article_version_details($article_id, $version_id)
+N = Make_the_article_public($article_id)
+O = Make_the_article_private($article_id)
+ 
+
+Z = obtain_category_list ()
+
+*/
+
+// The current category lists can be obtained fropm http://api.figshare.com/v1/categories
+// This is also not in the doco.
+//------------------------------------------------------------------------------
+
+$action = "O";
+$article_id = "964771";
+$file_path = "/home/ubuntu/Fig_Test_data.csv";
+$version_id = "1";
+
+ // Testing area. To Be deleted.
+ switch ($action) {
+    case "A":
+        echo "Selected A \n\n\n\n";
+		$title = 'GD Test dataset 2';
+		$description = 'Test description 2';
+		$type = 'dataset';
+		$response = Create_an_Article($title, $description, $type);
+		echo $response;  // json format.
+        break;
+    case "B":
+        echo "Selected B --> Update Article \n\n\n";
+		$title = 'GD Test dataset 2b';
+		$description = 'Test description 2b';
+		$type = 'dataset'; // types can be "dataset', 'figure', 'media', 'poster', 'paper', 'thesis', 'code', 'presentation', 'fileset'
+		$response = Update_Article ($title, $description, $type, $article_id);
+		echo $response;
+        break;
+	case "C":
+	    echo "Selected C -> Delete Article \n\n\n";
+		$response = Delete_Article ($article_id);
+		echo $response;
+        break;
+	case "D":
+	    echo "Selected D -> Add Category \n\n\n";
+		$cat_number = "76";
+		$response = Add_Category_to_Article($article_id, $cat_number);
+		echo $response;
+        break;
+	case "E":
+	    echo "Selected E -> Add Tags \n\n\n";
+		$tag_name = "Tag_1";
+		$response = Add_Tags_to_Article($article_id, $tag_name);
+		echo $response;
+        break;
+	case "F":
+	    echo "Selected F -> Add links \n\n\n";
+		$tag_name = "Tag_1";
+		$response = Add_links_to_Article($article_id, $tag_name);
+		echo $response;
+        break;
+	case "G":
+	    echo "Selected G -> Search for an Author \n\n\n";
+		$author = "Graham ";
+		$response = Search_for_an_author ($author);
+		echo $response;
+        break;
+	case "H":
+	    echo "Selected H -> Creat a new Author \n\n\n";
+		$author = "ALF Leahey";
+		$response = Create_new_author ($author);
+		echo $response;
+	    break;
+	case "I":
+	    echo "Selected I -> Add authors to an article \n\n\n";
+		$author = "ALF Leahey";
+		$response = Add_authors_to_article ($article_id, $author_id);
+		echo $response;
+	    break;
+	case "J":
+	    echo "Selected J -> Upload file to article \n\n\n";
+		$response = Upload_file_to_article ($article_id, $file_path);
+		echo $response;
+	    break;
+	case "K":
+	    echo "Selected K -> Check the article details \n\n\n";
+		$response = Check_the_article_details($article_id);
+		echo $response;
+	    break;
+	case "L":
+	    echo "Selected L -> View article versions \n\n\n";
+		$response = View_article_versions($article_id);
+		echo $response;
+	    break;
+	case "M":
+	    echo "Selected M -> View article version details \n\n\n";
+		$response = View_article_version_details($article_id, $version_id);
+		echo $response;
+	    break;
+	case "N":
+	    echo "Selected N -> Make the article public \n\n\n";
+		$response = Make_the_article_public($article_id);
+		echo $response;
+	    break;
+	case "O":
+	    echo "Selected N -> Make the article private \n\n\n";
+		$response = Make_the_article_private($article_id);
+		echo $response;
+	    break;
+    case "Z":
+        echo "Selected Z    ";
+		obtain_category_list ();
+        break;
+}
+//----------------------------------------------------------------------------------
+// END TESTING AREA//
+?>
