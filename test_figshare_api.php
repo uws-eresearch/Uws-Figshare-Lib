@@ -4,6 +4,20 @@ require 'Figshare_api.php';  // The actual Figshare Lib.
 
 // Actions summary..
 
+$action = "A";
+$title ="test 3";
+$description = "Test 3 Description";
+$type =""; // Media, Dataset, Poster, Paper, Thesis, Code, Presentation or Fileset
+// //See figshare.com/article_types
+$article_id = '';
+$cat_number = '';
+$tag_name = '';
+$author = '';
+$auther_id ='';
+$file_path = '';
+$version_id = '';
+
+
 /*
 A = Create_an_Article($title, $description, $type)
 B = Update_Article ($title, $description, $type, $article_id)
@@ -30,12 +44,6 @@ Z = obtain_category_list ()
 // This is also not in the doco.
 //------------------------------------------------------------------------------
 
-$action = "O";
-$article_id = "964771";
-$file_path = "/home/ubuntu/Fig_Test_data.csv";
-$version_id = "1";
-
- // Testing area. To Be deleted.
  switch ($action) {
     case "A":
         echo "Selected A \n\n\n\n";
@@ -96,6 +104,8 @@ $version_id = "1";
 	    break;
 	case "J":
 	    echo "Selected J -> Upload file to article \n\n\n";
+		$article_id = "";
+		$file_path = "";
 		$response = Upload_file_to_article ($article_id, $file_path);
 		echo $response;
 	    break;
@@ -120,7 +130,7 @@ $version_id = "1";
 		echo $response;
 	    break;
 	case "O":
-	    echo "Selected N -> Make the article private \n\n\n";
+	    echo "Selected O -> Make the article private \n\n\n";
 		$response = Make_the_article_private($article_id);
 		echo $response;
 	    break;
