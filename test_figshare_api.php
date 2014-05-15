@@ -135,7 +135,7 @@ Z = obtain_category_list ()
 		echo $response;
 	    break;
     case "Z":
-        echo "Selected Z    ";
+        echo "Selected Z -> Obtain the category list";
 		$response = obtain_category_list ();
 		echo $response;
         break;
