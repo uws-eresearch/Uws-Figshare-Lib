@@ -342,10 +342,8 @@ return $response;
 function obtain_category_list () {
 
 $cat_list_json =  Talk_To_Figshare ('GET', 'http://api.figshare.com/v1/categories', '');
-$cat_list_arr = array();
-$cat_list_arr = json_decode($cat_list_json, true);
+return $cat_list_json;
 
-return $cat_list_arr;
 }
 //-------------------------------------------------------------------------------------------------------
 ?>
