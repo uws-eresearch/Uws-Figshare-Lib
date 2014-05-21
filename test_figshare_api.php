@@ -4,19 +4,36 @@ require 'Figshare_api.php';  // The actual Figshare Lib.
 
 // Actions summary..
 
-$action = "A";
-$title ="test 3";
-$description = "Test 3 Description";
+$action =$_POST['ft_action'];
+$title = $_POST['ft_title'];
+$description = $_POST['ft_description'];
+$type =$_POST['ft_type'];
+// Figure, Media, Dataset, Poster, Paper, Thesis, Code, Presentation or Fileset
+// See figshare.com/article_types
+$article_id = $_POST['ft_article_id'];
+$cat_number = $_POST['ft_cat_number'];
+$tag_name = $_POST['ft_tag_name'];
+$link_addr = $_POST['ft_link_addr'];
+$author = $_POST['ft_author'];
+$author_id =$_POST['ft_author_id'];
+$file_path = $_POST['ft_file_path'];
+$version_id = $_POST['ft_version'];
+
+
+/*
+$action = "K";
+$title ="test 6";
+$description = "Test 6 Description";
 $type =""; // Figure, Media, Dataset, Poster, Paper, Thesis, Code, Presentation or Fileset
 // //See figshare.com/article_types
-$article_id = '';
+$article_id = '960162';
 $cat_number = '';
 $tag_name = '';
 $author = '';
 $auther_id ='';
 $file_path = '';
 $version_id = '';
-
+*/
 
 /*
 A = Create_an_Article($title, $description, $type)
@@ -46,18 +63,19 @@ Z = obtain_category_list ()
 
  switch ($action) {
     case "A":
-        echo "Selected A \n\n\n\n";
-		$title = 'GD Test dataset 2';
-		$description = 'Test description 2';
-		$type = 'dataset';
+        echo "Selected-->A \n || Title-->$title<---\n || Description-->$description<-- \n";
+		echo "|| Type--->$type<---";
+//		$title = 'GD Test dataset 2';
+//		$description = 'Test description 2';
+//		$type = 'dataset';
 		$response = Create_an_Article($title, $description, $type);
-		echo $response;  // json format.
+		echo "Figshare Returned --> $response";  // json format.
         break;
     case "B":
         echo "Selected B --> Update Article \n\n\n";
-		$title = 'GD Test dataset 2b';
-		$description = 'Test description 2b';
-		$type = 'dataset'; // types can be "dataset', 'figure', 'media', 'poster', 'paper', 'thesis', 'code', 'presentation', 'fileset'
+//		$title = 'GD Test dataset 2b';
+//		$description = 'Test description 2b';
+//		$type = 'dataset'; // types can be "dataset', 'figure', 'media', 'poster', 'paper', 'thesis', 'code', 'presentation', 'fileset'
 		$response = Update_Article ($title, $description, $type, $article_id);
 		echo $response;
         break;
@@ -67,21 +85,21 @@ Z = obtain_category_list ()
 		echo $response;
         break;
 	case "D":
-	    echo "Selected D -> Add Category \n\n\n";
-		$cat_number = "76";
+	    echo "Selected D -> Add Category Cat is -->$cat_number<--";
+//		$cat_number = "76";
 		$response = Add_Category_to_Article($article_id, $cat_number);
 		echo $response;
         break;
 	case "E":
 	    echo "Selected E -> Add Tags \n\n\n";
-		$tag_name = "Tag_1";
+//		$tag_name = "Tag_1";
 		$response = Add_Tags_to_Article($article_id, $tag_name);
 		echo $response;
         break;
 	case "F":
 	    echo "Selected F -> Add links \n\n\n";
-		$tag_name = "Tag_1";
-		$response = Add_links_to_Article($article_id, $tag_name);
+//		$tag_name = "Tag_1";
+		$response = Add_links_to_Article($article_id, $link_addr);
 		echo $response;
         break;
 	case "G":
@@ -92,20 +110,21 @@ Z = obtain_category_list ()
         break;
 	case "H":
 	    echo "Selected H -> Creat a new Author \n\n\n";
-		$author = "ALF Leahey";
+//		$author = "ALF Leahey";
 		$response = Create_new_author ($author);
 		echo $response;
 	    break;
 	case "I":
 	    echo "Selected I -> Add authors to an article \n\n\n";
-		$author = "ALF Leahey";
+//		$author = "ALF Leahey";
 		$response = Add_authors_to_article ($article_id, $author_id);
 		echo $response;
 	    break;
 	case "J":
 	    echo "Selected J -> Upload file to article \n\n\n";
-		$article_id = "";
-		$file_path = "";
+//		$article_id = "";
+//		$file_path = "";
+		echo "File path before call -->$file_path<--";
 		$response = Upload_file_to_article ($article_id, $file_path);
 		echo $response;
 	    break;
@@ -139,6 +158,8 @@ Z = obtain_category_list ()
 		$response = obtain_category_list ();
 		echo $response;
         break;
+		
+		echo 'return to <a href = "form_test.html"> Back to Form </a>';
 }
 //----------------------------------------------------------------------------------
 // END TESTING AREA//
